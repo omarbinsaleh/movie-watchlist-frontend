@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFromLocalStorage } from '../../../utilities/MovieWatchlist/utilities';
 
 const AddMovieForm = () => {
 
@@ -23,9 +24,17 @@ const AddMovieForm = () => {
       // step 1: prevent the default form submition behaviour
       e.preventDefault();
 
-      // step 2: log the form data information
+      // step 2: create a movie log
+      const movie = {
+         id: crypto.randomUUID(),
+         movieName: formData.movie,
+         ott: formData.ott,
+         rating: null,
+         isWatched: false
+      }
       console.log(formData);
-
+      
+      addMovieToLocalStorage(movie);
       // step 3: reset the form
       setFormData({movie: "", ott: ""})
    }
@@ -34,7 +43,7 @@ const AddMovieForm = () => {
     <div className='w-full p-4 max-w-6xl mx-auto'> 
       <form onSubmit={handleSubmit} className='w-full flex items-center justify-center  gap-4' >
          <input className='flex-1 max-w-md  py-2 px-3 border rounded-sm' type="text" name="movie" id="movie-name-input" value={formData.movie} onChange={handleChange} placeholder='Enter movie name' />
-         <select className='py-2 px-3 border rounded-sm cursor-pointer ' name="ott" id="ott" value={formData.ott} onChange={handleChange} >
+         <select className=' py-2 px-2 border rounded-sm cursor-pointer ' name="ott" id="ott" value={formData.ott} onChange={handleChange} >
             <option className='text-black' value="">Select OTT Platform</option>
             <option className='text-black' value="amazon">Amazon</option>
             <option className='text-black' value="netflix">Netflix</option>
