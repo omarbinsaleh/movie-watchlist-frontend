@@ -54,5 +54,16 @@ function getAllMoviesFromLocalStorage() {
    return movies;
 }
 
+// name : updateTheMovieList
+// desc : replate or update the previous movies list with a new or updated list
+function updateTheMovieList(newMovieList) {
+   if (!Array.isArray(newMovieList)) return console.error('The updateTheMovieList method expect an array. Please a try again later.')
+
+   localStorage.setItem('movies', JSON.stringify(newMovieList));
+
+   const updatedMoviesList = JSON.parse(localStorage.getItem('movies'));
+   return updatedMoviesList;
+}
+
 // export all the utility functions or helper functions
-export {addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFromLocalStorage, getAllMoviesFromLocalStorage};
+export {addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFromLocalStorage, getAllMoviesFromLocalStorage, updateTheMovieList};

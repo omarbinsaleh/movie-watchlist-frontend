@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFromLocalStorage } from '../../../utilities/MovieWatchlist/utilities';
 
-const AddMovieForm = () => {
+const AddMovieForm = ({addMovie}) => {
 
    const [formData, setFormData] = useState({
       movie: "",
@@ -24,7 +24,10 @@ const AddMovieForm = () => {
       // step 1: prevent the default form submition behaviour
       e.preventDefault();
 
-      // step 2: create a movie log
+      // step 2: Check user input and validate
+      if (!formData.movie || !formData.ott) return
+
+      // step 3: create a movie log
       const movie = {
          id: crypto.randomUUID(),
          movieName: formData.movie,
@@ -33,10 +36,10 @@ const AddMovieForm = () => {
          isWatched: false
       };
       
-      console.log(formData);
-      addMovieToLocalStorage(movie);
+      // step 4: save the movie in the local storage and update the UI
+      addMovie(movie);
 
-      // step 3: reset the form
+      // step 4: reset the form
       setFormData({ movie: "", ott: "" })
    }
 

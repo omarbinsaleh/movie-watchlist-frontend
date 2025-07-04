@@ -1,12 +1,12 @@
 import React from 'react'
 import ListItem from './ListItem'
 
-const MovieList = () => {
+const MovieList = ({movies, onWatched, onUnwatched}) => {
   return (
     <div className='flex-1'>
       <section className='w-full h-full max-w-6xl mx-auto p-3 px-0'>
          <ul className='space-y-3'>
-          {Array(25).fill(2).map((item, index) => <ListItem key={index} value={index + 1} />)}
+          {movies.map((movie, index) => <ListItem key={movie.id} data={movie} onWatched={onWatched} onUnwatched={onUnwatched} />)}
          </ul>
       </section>
     </div>
