@@ -1,5 +1,5 @@
-// name        : addMovieToLocalStorage
-// description : Add a new movie to the local storage
+// name : addMovieToLocalStorage
+// desc : Add a new movie to the local storage
 function addMovieToLocalStorage(movie) {
    // step 1: check if a new movie has been provided or not
    if (!movie) return console.error("You need to pass a movie object in order to add one. Please try later.");
@@ -14,8 +14,8 @@ function addMovieToLocalStorage(movie) {
    console.log('current Movies --->', JSON.parse(localStorage.getItem('movies')));
 };
 
-// name        : deleteAllMoviesFromLocalStorage
-// description : Delete all the movies from the local storage
+// name : deleteAllMoviesFromLocalStorage
+// desc : Delete all the movies from the local storage
 function deleteAllMoviesFromLocalStorage() {
    // step 1: delete all the movies from the local storage
    localStorage.setItem('movies', JSON.stringify([]));
@@ -24,8 +24,8 @@ function deleteAllMoviesFromLocalStorage() {
    console.log(JSON.parse('Current Movies--->', localStorage.getItem('movies')));
 };
 
-// name        : deleteMovieFromLocalStorage
-// description : Delete a single movie from the movies list in the local storage
+// name : deleteMovieFromLocalStorage
+// desc : Delete a single movie from the movies list in the local storage
 function deleteMovieFromLocalStorage(movieId) {
    // step 1: check if the movie ID is provided or not
    if (!movieId) return console.error("You must provide a movie ID in order to delete one. Please try later with a valid movie ID");
@@ -47,5 +47,12 @@ function deleteMovieFromLocalStorage(movieId) {
    console.log('Current Movies--->', JSON.parse(localStorage.getItem('movies')));
 };
 
+// name : getAllMoviesFromLocalStorage
+// desc : extract all the movies objects stored in the local storage
+function getAllMoviesFromLocalStorage() {
+   const movies = JSON.parse(localStorage.getItem('movies')) || [];
+   return movies;
+}
+
 // export all the utility functions or helper functions
-export {addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFromLocalStorage};
+export {addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFromLocalStorage, getAllMoviesFromLocalStorage};

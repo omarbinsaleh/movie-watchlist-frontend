@@ -4,7 +4,7 @@ import { addMovieToLocalStorage, deleteAllMoviesFromLocalStorage, deleteMovieFro
 const AddMovieForm = () => {
 
    const [formData, setFormData] = useState({
-      movie:"",
+      movie: "",
       ott: "",
 
    })
@@ -17,7 +17,7 @@ const AddMovieForm = () => {
       const value = e.target.value;
 
       // step 3: update the form data state value with the new information
-      setFormData({...formData, [key]: value});
+      setFormData({ ...formData, [key]: value });
    }
 
    const handleSubmit = (e) => {
@@ -31,30 +31,33 @@ const AddMovieForm = () => {
          ott: formData.ott,
          rating: null,
          isWatched: false
-      }
-      console.log(formData);
+      };
       
+      console.log(formData);
       addMovieToLocalStorage(movie);
+
       // step 3: reset the form
-      setFormData({movie: "", ott: ""})
+      setFormData({ movie: "", ott: "" })
    }
 
-  return (
-    <div className='w-full p-4 max-w-6xl mx-auto'> 
-      <form onSubmit={handleSubmit} className='w-full flex items-center justify-center  gap-4' >
-         <input className='flex-1 max-w-md  py-2 px-3 border rounded-sm' type="text" name="movie" id="movie-name-input" value={formData.movie} onChange={handleChange} placeholder='Enter movie name' />
-         <select className=' py-2 px-2 border rounded-sm cursor-pointer ' name="ott" id="ott" value={formData.ott} onChange={handleChange} >
-            <option className='text-black' value="">Select OTT Platform</option>
-            <option className='text-black' value="amazon">Amazon</option>
-            <option className='text-black' value="netflix">Netflix</option>
-            <option className='text-black' value="hotstar">Hotstar</option>
-            <option className='text-black' value="disney+">Disney+</option>
-            <option className='text-black' value="sonyliv">SonyLIV</option>
-         </select>
-         <input className='py-2 px-5 bg-blue-600 rounded-sm cursor-pointer active:scale-105' type="submit" value="Add" />
-      </form>
-    </div>
-  )
+   return (
+      <div className='w-full p-4 max-w-6xl mx-auto'>
+         <form onSubmit={handleSubmit} className='w-full flex items-center justify-center  gap-4 flex-wrap' >
+            <input className='flex-1 max-w-md  py-2 px-3 bg-white text-black placeholder:text-gray-500 rounded-md' type="text" name="movie" id="movie-name-input" value={formData.movie} onChange={handleChange} placeholder='Enter movie name' />
+
+            <select className=' py-2 cursor-pointer bg-white text-black rounded-md px-1' name="ott" id="ott" value={formData.ott} onChange={handleChange} >
+               <option className='text-black' value="">OTT</option>
+               <option className='text-black' value="amazon">Amazon</option>
+               <option className='text-black' value="netflix">Netflix</option>
+               <option className='text-black' value="hotstar">Hotstar</option>
+               <option className='text-black' value="disney+">Disney+</option>
+               <option className='text-black' value="sonyliv">SonyLIV</option>
+            </select>
+
+            <input className='py-2 px-5 bg-blue-600 rounded-md cursor-pointer active:scale-105 flex-1 sm:max-w-[80px]' type="submit" value="Add" />
+         </form>
+      </div>
+   )
 }
 
 export default AddMovieForm
