@@ -1,8 +1,9 @@
 import React from 'react'
 import { FaTrash } from 'react-icons/fa';
 import { FaTrashCan } from 'react-icons/fa6';
+import StarRating from '../StarRating/StarRating';
 
-const ListItem = ({ data, onWatched, onUnwatched, onDelete }) => {
+const ListItem = ({ data, onWatched, onUnwatched, onDelete, onRatingChange }) => {
    const { id: movieId, movieName, ott, rating, isWatched } = data;
 
    const handleWatchedBtnClick = (movieId) => {
@@ -25,6 +26,10 @@ const ListItem = ({ data, onWatched, onUnwatched, onDelete }) => {
          <span>
             {movieName}
          </span>
+
+         <div>
+            <StarRating value={rating} movieId={movieId} onRatingChange={onRatingChange} />
+         </div>
 
          <div className='flex items-center gap-3'>
             <span>

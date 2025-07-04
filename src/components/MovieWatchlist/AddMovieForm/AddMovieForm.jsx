@@ -32,7 +32,7 @@ const AddMovieForm = ({addMovie}) => {
          id: crypto.randomUUID(),
          movieName: formData.movie,
          ott: formData.ott,
-         rating: null,
+         rating: 0,
          isWatched: false
       };
       

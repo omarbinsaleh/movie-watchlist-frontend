@@ -81,6 +81,23 @@ const MovieWatchlist = () => {
     updateTheMovieList(newMovies);
   }
 
+  // HANDLE THE RATING CHANGE
+  const handleRatingChange = (movieId, ratingValue) => {
+    if (ratingValue < 0 || ratingValue > 5) return;
+
+    const newMovies = movies.map(movie => {
+      if (movie.id === movieId) {
+        return {...movie, rating: ratingValue};
+      } else {
+        return movie;
+      }
+    });
+
+    // update the UI and save the new movies list in the local storage
+    setMovies(newMovies);
+    updateTheMovieList(newMovies);
+  }
+
 
   return (
     <div className='w-full min-h-screen flex flex-col border'>
@@ -97,7 +114,7 @@ const MovieWatchlist = () => {
       </section>
 
       <section className='py-1.5'>
-        <MovieList movies={movies} onWatched={handleWatched} onUnwatched={handleUnwatched} onDelete={handleDelete} />
+        <MovieList movies={movies} onWatched={handleWatched} onUnwatched={handleUnwatched} onDelete={handleDelete} onRatingChange={handleRatingChange} />
       </section>
     </div>
   )
