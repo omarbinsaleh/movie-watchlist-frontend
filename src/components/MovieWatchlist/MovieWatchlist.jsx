@@ -10,6 +10,7 @@ const MovieWatchlist = () => {
 
   console.log('moviesList', movies);
 
+  // ADD NEW MOVIE
   const addMovie = (movie) => {
     // check if the movie object is provided or not
     if (!movie) return console.error("addMovie method expects a movie object as parameter");
@@ -22,6 +23,7 @@ const MovieWatchlist = () => {
     addMovieToLocalStorage(movie);
   }
 
+  // DELETE A MOVIE
   const deleteMovie = (movieId) => {
     const newMovies = movies.filter(movie => movie.id !== movieId);
     setMovies(newMovies);
@@ -29,6 +31,7 @@ const MovieWatchlist = () => {
     deleteMovieFromLocalStorage(movieId);
   }
 
+  // MARK A MOVIE AS WATCHED ALREADY
   const handleWatched = (movieId) => {
     // check if the movie object exists with the same movie ID in question
     const movie = movies.find(movie => movie.id === movieId);
@@ -48,6 +51,7 @@ const MovieWatchlist = () => {
     updateTheMovieList(newMovies) // update the movies in the local storage
   }
 
+  // MAKR A MOVIE AS UNWATCHED
   const handleUnwatched = (movieId) => {
     // check if the movie object exists with the same movie ID in question
     const movie = movies.find(movie => movie.id === movieId);
@@ -61,6 +65,16 @@ const MovieWatchlist = () => {
         return movie;
       }
     });
+
+    // update the UI and save the new movies list in the local storage
+    setMovies(newMovies);
+    updateTheMovieList(newMovies);
+  }
+
+  // DELETE A MOVIE
+  const handleDelete = (movieId) => {
+    // delete the movie and create a new list of movies to save
+    const newMovies = movies.filter(movie => movie.id !== movieId);
 
     // update the UI and save the new movies list in the local storage
     setMovies(newMovies);
@@ -83,7 +97,7 @@ const MovieWatchlist = () => {
       </section>
 
       <section className='py-1.5'>
-        <MovieList movies={movies} onWatched={handleWatched} onUnwatched={handleUnwatched} />
+        <MovieList movies={movies} onWatched={handleWatched} onUnwatched={handleUnwatched} onDelete={handleDelete} />
       </section>
     </div>
   )
