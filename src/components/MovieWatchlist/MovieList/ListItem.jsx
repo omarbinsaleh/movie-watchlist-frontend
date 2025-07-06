@@ -22,8 +22,8 @@ const ListItem = ({ data, onWatched, onUnwatched, onDelete, onRatingChange }) =>
    }
 
    return (
-      <li className='px-3 py-1.5 flex items-center justify-between'>
-         <span>
+      <li className='px-3 py-1.5 flex items-center justify-between '>
+         <span className='w-sm sm:min-w-[200px]'>
             {movieName}
          </span>
 
@@ -31,17 +31,17 @@ const ListItem = ({ data, onWatched, onUnwatched, onDelete, onRatingChange }) =>
             <StarRating value={rating} movieId={movieId} onRatingChange={onRatingChange} />
          </div>
 
-         <div className='flex items-center gap-3'>
+         <div className='flex items-center gap-3 ml-2'>
             <span>
                {!isWatched
                   ?
-                  (<button onClick={() => handleWatchedBtnClick(movieId)} className='py-1 px-2 rounded-md bg-green-500 cursor-pointer active:scale-105'>Watched</button>)
+                  (<button onClick={() => handleWatchedBtnClick(movieId)} className='py-1 px-2 rounded-md bg-green-500 cursor-pointer active:scale-105 text-sm'>Watched</button>)
                   :
-                  (<button onClick={() => handleUnwatchedBtnClick(movieId)} className='py-1 px-2 rounded-md bg-red-500 cursor-pointer active:scale-105'>Unwatched</button>)
+                  (<button onClick={() => handleUnwatchedBtnClick(movieId)} className='py-1 px-2 rounded-md bg-red-500 cursor-pointer active:scale-105 text-sm'>Unwatched</button>)
                }
             </span>
 
-            <button className='p-2 bg-red-500 rounded-md active:scale-105 cursor-pointer hover:bg-red-600' onClick={() => handleDeleteBtnClick(movieId)}>
+            <button className='p-2 bg-red-500 rounded-md active:scale-105 cursor-pointer hover:bg-red-600 text-sm' onClick={() => handleDeleteBtnClick(movieId)}>
                <FaTrashCan />
             </button>
 
