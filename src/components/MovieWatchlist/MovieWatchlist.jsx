@@ -100,7 +100,7 @@ const MovieWatchlist = () => {
 
 
   return (
-    <div className='w-full min-h-screen flex flex-col border'>
+    <div className='w-full min-h-screen flex flex-col'>
       <section className='py-1.5'>
         <Header />
       </section>
