@@ -11,8 +11,8 @@ const QuickLinks = () => {
          <Divider />
 
          <main className='flex gap-2'>
-            <Link className='px-3 py-2 bg-gray-500 rounded-md' to={'/movie-watchlist'} >Movie Watchlist</Link>
-            <Link className='px-3 py-2 bg-gray-500 rounded-md' to={'/employee-attendances'}>Employee Attendances</Link>
+            <Link className='px-3 py-2 bg-gray-500 rounded-md max-w-[130px] text-center' to={'/movie-watchlist'} >Movie Watchlist</Link>
+            <Link  className='px-3 py-2 bg-gray-500 rounded-md max-w-[130px] text-center wrap-break-word' to={'/employee-attendances'}>Employee Attendances</Link>
          </main>
       </section>
    )

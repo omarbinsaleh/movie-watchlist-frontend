@@ -44,7 +44,7 @@ const AddMovieForm = ({addMovie}) => {
    }
 
    return (
-      <div className='w-full p-4 max-w-6xl mx-auto'>
+      <div className='w-full p-4 max-w-5xl mx-auto'>
          <form onSubmit={handleSubmit} className='w-full flex items-center justify-center  gap-4 flex-wrap' >
             <input className='flex-1 max-w-md  py-2 px-3 bg-white text-black placeholder:text-gray-500 rounded-md' type="text" name="movie" id="movie-name-input" value={formData.movie} onChange={handleChange} placeholder='Enter movie name' />
 

@@ -24,6 +24,7 @@ const StarRating = ({ value = 0, movieId, onRatingChange }) => {
             onChange={handleChange}
             isRequired
             itemStyles={myStyle}
+            className='z-0'
          />
          <p className='text-sm hidden sm:block'>{starsText[rating < 0 ? 0 :(rating - 1)]}</p>
          {!rating && <p className='text-sm hidden sm:block'>Not Rated Yet</p>}

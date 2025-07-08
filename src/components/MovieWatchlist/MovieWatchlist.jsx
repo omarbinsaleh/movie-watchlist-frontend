@@ -4,6 +4,8 @@ import Filter from './Filter/Filter'
 import MovieList from './MovieList/MovieList'
 import AddMovieForm from './AddMovieForm/AddMovieForm'
 import { addMovieToLocalStorage, deleteMovieFromLocalStorage, getAllMoviesFromLocalStorage, updateTheMovieList } from '../../utilities/MovieWatchlist/utilities'
+import HomeBtn from './HomeBtn/HomeBtn'
+import Divider from '../Divider/Divider'
 
 const MovieWatchlist = () => {
   const [movies, setMovies] = useState(getAllMoviesFromLocalStorage());
@@ -40,7 +42,7 @@ const MovieWatchlist = () => {
     // create a new movies list
     const newMovies = movies.map(movie => {
       if (movie.id === movieId) {
-        return {...movie, isWatched: true}
+        return { ...movie, isWatched: true }
       } else {
         return movie;
       }
@@ -60,7 +62,7 @@ const MovieWatchlist = () => {
     // create a new movies list
     const newMovies = movies.map(movie => {
       if (movie.id === movieId) {
-        return {...movie, isWatched: false};
+        return { ...movie, isWatched: false };
       } else {
         return movie;
       }
@@ -87,7 +89,7 @@ const MovieWatchlist = () => {
 
     const newMovies = movies.map(movie => {
       if (movie.id === movieId) {
-        return {...movie, rating: ratingValue};
+        return { ...movie, rating: ratingValue };
       } else {
         return movie;
       }
@@ -101,16 +103,25 @@ const MovieWatchlist = () => {
 
   return (
     <div className='w-full min-h-screen flex flex-col'>
-      <section className='py-1.5'>
+      <section className='py-1.5 w-full '>
+        <div className='px-3 py-3 max-w-5xl mx-auto'>
+          <HomeBtn />
+        </div>
+
+        <Divider />
+
         <Header />
       </section>
 
-      <section className='border-b border-gray-500 py-1.5'>
+      <section className=' w-full py-1.5'>
         <AddMovieForm addMovie={addMovie} />
       </section>
 
-      <section className='sticky top-0 left-0 bg-gray-800 border-b border-gray-500 py-1.5'>
+      <Divider />
+
+      <section className='sticky top-0 left-0 bg-gray-800 py-1.5 z-10 '>
         <Filter />
+        <Divider />
       </section>
 
       <section className='py-1.5'>
