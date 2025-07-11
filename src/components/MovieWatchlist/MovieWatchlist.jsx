@@ -6,6 +6,7 @@ import AddMovieForm from './AddMovieForm/AddMovieForm'
 import { addMovieToLocalStorage, deleteMovieFromLocalStorage, getAllMoviesFromLocalStorage, updateTheMovieList } from '../../utilities/MovieWatchlist/utilities'
 import HomeBtn from './HomeBtn/HomeBtn'
 import Divider from '../Divider/Divider'
+import toast from 'react-hot-toast'
 
 const MovieWatchlist = () => {
   const [movies, setMovies] = useState(getAllMoviesFromLocalStorage());
@@ -23,6 +24,9 @@ const MovieWatchlist = () => {
 
     // save the movie in the local storage
     addMovieToLocalStorage(movie);
+
+    // notify the user about the item added
+    toast.success(`A movie named ${movie.movieName} has been added successfully!`)
   }
 
   // DELETE A MOVIE
@@ -81,6 +85,9 @@ const MovieWatchlist = () => {
     // update the UI and save the new movies list in the local storage
     setMovies(newMovies);
     updateTheMovieList(newMovies);
+
+    // notify the user about the deleted item
+    toast.success('Entry deleted successfully!')
   }
 
   // HANDLE THE RATING CHANGE
