@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MovieWatchlist from '../components/MovieWatchlist/MovieWatchlist'
-import EmployeeAttendance from '../components/EmployeeAttendance/EmployeeAttendance'
+import EmployeeAttendance from '../pages/EmployeeAttendance/EmployeeAttendance'
 import Home from '../pages/Home/Home'
 
 const router = createBrowserRouter([
